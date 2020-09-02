@@ -96,7 +96,8 @@ YOLOv5をインストールした際にダウンロードされたデフォル�
 Image(filename='inference/output/zidane.jpg', width=600)
 ```
 
-<img src="/Users/imanim/Library/Application Support/typora-user-images/スクリーンショット 2020-09-02 13.38.44.png" alt="スクリーンショット 2020-09-02 13.38.44" style="zoom:40%;" />
+<img width="613" alt="スクリーンショット 2020-09-02 13 38 44" src="https://user-images.githubusercontent.com/68985919/91982593-70501e00-ed65-11ea-8ae8-57889a9c0fd4.png">
+
 
 引数のsourceで推論に使用するファイルを指定する。
 
