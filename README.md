@@ -136,7 +136,7 @@ Image(filename='inference/output/zidane.jpg', width=600)
 
 学習を実行する前に、「yolov5」フォルダ内の「data」フォルダに、roboflowでダウンロードした「Mask Wearing~」フォルダ内の「data.yaml」を移動する。
 
-ちなみにData.yamlを確認すると
+ちなみにData.yamlの中身を確認すると
 
 ```yaml
 train: ../train/images
