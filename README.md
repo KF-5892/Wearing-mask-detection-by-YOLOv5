@@ -9,6 +9,10 @@
 Google colaboratory 
 
 Mask Wearing Dataset
+#### 追記
+roboflowで公開されているデータでは学習がうまくいかない場合があり。その際は下記のgithubのデータを使用する。
+https://github.com/offsouza/yolov5_face_mask_detection
+Mask Wearing Dataset
 
 ### 大まかな手順
 
@@ -72,14 +76,14 @@ os.chdir("/content/drive/My Drive/YOLOv5_mask")
 %cd yolov5 # yolov5フォルダに移動
 
 import torch
-from IPython.display import Image, clear_output  # 画像を表示する
+from IPython.display import Image, clear_output  # 画像を表示する。一番最後に
 from utils.google_utils import gdrive_download  # モデルをダウンロード
 
 clear_output()
 print('Setup complete. Using torch %s %s' % (torch.__version__, torch.cuda.get_device_properties(0) if torch.cuda.is_available() else 'CPU'))
 ```
 
-成功すると「YOLOv5_mask」フォルダ内に「YOLOv5」フォルダが作成され、位置が「yolov5」に変更される。
+成功すると「YOLOv5_mask」フォルダ内に「yolov5」フォルダが作成され、位置が「yolov5」に変更される。
 
 ```
 pwd
@@ -149,9 +153,10 @@ names: ['mask', 'no-mask']
 となっている。
 
 「data.yaml」を移動したら以下を実行して学習を開始する。バッチ数とエポック数は以下の数字を変更すると任意の値で学習が可能になる。
+指定しなければエポック３００、バッチサイズ１６がデフォルトで設定される。
 
 ```python
-!python train.py --img 416 --batch 16 --epochs 300 --data data.yaml --cfg yolov5x.yaml
+!python train.py --img 416 --batch 16 --epochs 300 --data data.yaml --cfg yolov5s.yaml
 ```
 
 学習には２~3時間かかるので、ランタイムが途中で切れることに注意。
@@ -159,13 +164,14 @@ names: ['mask', 'no-mask']
 ### 学習したデータをもとに推論
 
 学習した重みを使用して推論を行う。学習した重みは runs/exp0/weights 内に「best.pt」という名前で保存されている。
+※学習を行うたびに、exp1,exp2というふうに増えていく。下記のコードで指定する重みファイルのパスを、どのexpフォルダなのか適切に設定すること。
 
 1. 推論したい画像を「Mask Wearing~」フォルダのtest/imagesから選択。
 2. 選択した画像を「yolov5」フォルダ内に移動して名前を「test.jpg」に変更。
 3. 以下を実行する。
 
 ```python
-!python detect.py --source test.jpg --weights runs/exp2/weights/best.pt --img 416
+!python detect.py --source test.jpg --weights runs/exp0/weights/best.pt --img 416
 Image(filename='inference/output/test.jpg', width=419)
 ```
 
