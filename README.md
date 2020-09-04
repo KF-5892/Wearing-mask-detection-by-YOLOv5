@@ -170,6 +170,7 @@ Image(filename='inference/output/test.jpg', width=419)
 ```
 
 結果は、inference/output内に「test.jpg」として保存される。
-成功例
+
+例えば、このように表示されたら成功
 ![1](https://user-images.githubusercontent.com/68985919/92197632-4ace2c00-eead-11ea-9ca7-9c00cd212dc7.jpg)
 
